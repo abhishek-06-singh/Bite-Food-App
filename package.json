@@ -1,0 +1,39 @@
+{
+  "name": "bite-food-app",
+  "version": "1.0.0",
+  "description": "bite food add ",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishek-06-singh/Bite-Food-app.git"
+  },
+  "keywords": [
+    "food",
+    "app"
+  ],
+  "author": "Abhishek Singh Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhishek-06-singh/Bite-Food-app/issues"
+  },
+  "homepage": "https://github.com/abhishek-06-singh/Bite-Food-app#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-spring": "^9.7.2"
+  },
+  "browsersList": [
+    "last 10 version"
+  ]
+}
