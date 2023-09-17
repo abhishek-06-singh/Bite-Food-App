@@ -1,10 +1,26 @@
 import React from "react";
 import "./main.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 const Main = () => {
   return (
     <div className="container">
       <div className="heading">
-        <h1>Order Food from best place near you</h1>
+        <div
+          style={{
+            alignItems: "center",
+            textAlign: "center",
+            marginTop: "30px",
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faLocationDot}
+            size="2xl"
+            color=" rgb(157, 2, 2)"
+          />
+          <h1>Order Food from best place near you</h1>
+        </div>
+
         <p>
           Bite is a cutting-edge restaurant app designed to enhance your dining
           experience. Whether you're a food enthusiast looking for new culinary

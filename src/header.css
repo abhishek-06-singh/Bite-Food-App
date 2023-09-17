@@ -2,11 +2,10 @@
   margin: 0;
   padding: 0;
   height: 65px;
-  background: #fff;
+  background: #eeeaea;
   display: flex;
   align-items: center;
-  box-shadow: 20px 15px 40px -20px rgba(40, 44, 63, 0.2);
-  border: 1px solid red;
+  box-shadow: 20px 55px 40px -20px rgba(40, 44, 63, 0.2);
 }
 
 .logoimg {
