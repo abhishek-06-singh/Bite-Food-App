@@ -13,11 +13,7 @@ const Main = () => {
             marginTop: "30px",
           }}
         >
-          <FontAwesomeIcon
-            icon={faLocationDot}
-            size="2xl"
-            color=" rgb(157, 2, 2)"
-          />
+          <FontAwesomeIcon icon={faLocationDot} size="2xl" color=" white" />
           <h1>Order Food from best place near you</h1>
         </div>
 

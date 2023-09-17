@@ -5,6 +5,27 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  position: relative;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust the height of the wave as needed */
+  background: linear-gradient(180deg, transparent 60%, #fff 60%, #fff 100%);
+  animation: waveFlow 2s linear infinite;
+}
+
+@keyframes waveFlow {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 100%;
+  }
 }
 
 .darkish-fade {
