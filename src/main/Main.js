@@ -5,7 +5,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const Main = () => {
   return (
-    <div className="container">
+    <div className="">
       <div className="heading">
         <div
           style={{

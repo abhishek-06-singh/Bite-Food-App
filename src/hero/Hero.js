@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import background from "./../../assets/herobackground.jpg";
+
 import "./hero.css";
 
 const Hero = () => {
