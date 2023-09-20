@@ -5,6 +5,7 @@ import "/index.css";
 import Header from "./Header";
 import Hero from "./hero/Hero";
 import Main from "./main/Main";
+import Restro from "./res/Restro";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Header />
       <Hero />
       <Main />
+      <Restro />
     </div>
   );
 };

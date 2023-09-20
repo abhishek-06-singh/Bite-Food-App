@@ -2,6 +2,7 @@ import React from "react";
 import "./main.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 const Main = () => {
   return (
     <div className="container">

@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  margin-top: 40px;
+}
+
+.filters {
+  margin: auto;
+  align-items: center;
+}
+input {
+  height: 50px;
+  width: 1100px;
+  border-radius: 30px;
+  padding-left: 20px;
+  border: 2px solid rgb(174, 173, 173);
+}
+
+.ant-btn-primary {
+  background-color: rgb(157, 2, 2);
+}
+.ant-btn-primary:hover {
+  background-color: rgb(229, 9, 9);
+}
+.ant-modal-body {
+  word-wrap: normal !important;
+  margin-left: 0 !important;
+}
+
+@media (max-width: 1237px) {
+  input {
+    width: 750px;
+  }
+}
+@media (max-width: 1050px) {
+  input {
+    width: 700px;
+  }
+}
+@media (max-width: 850px) {
+  .filters {
+    margin: auto;
+    align-items: center;
+  }
+  input {
+    width: 600px;
+  }
+}
+@media (max-width: 720px) {
+  .filters {
+    display: flex;
+    margin: auto;
+    align-items: center;
+
+    margin-bottom: 20px;
+    width: auto;
+  }
+  input {
+    width: 400px;
+    height: 45px;
+  }
+}
+@media (max-width: 450px) {
+  .container {
+    padding: 0;
+  }
+  input {
+    width: 200px;
+    height: 35px;
+  }
+  .filters {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 50%;
+    width: auto;
+  }
+}
