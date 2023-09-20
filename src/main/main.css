@@ -34,11 +34,27 @@
   color: rgb(45, 45, 45);
   font-size: 1.24rem;
 }
+h2 {
+  font-size: 25px;
+  color: #f55071;
+  font-weight: bold;
 
+  animation: tilt 2s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(20deg);
+  }
+}
 @media (max-width: 948px) {
   .bag-icon {
     flex-direction: column;
-    padding-left: 10px;
+    padding-left: 20px;
     background-color: rgb(243, 243, 243);
   }
   .heading h1 {
@@ -60,5 +76,8 @@
     margin-left: 40px;
     white-space: normal;
     max-width: 50%;
+  }
+  h2 {
+    font-size: 15px;
   }
 }

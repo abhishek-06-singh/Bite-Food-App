@@ -12,16 +12,20 @@ const Main = () => {
     <>
       <div className="bag-icon">
         <div className="icon-container">
-          <img style={{ width: "60%" }} src={bag} alt="Bag Icon" />
-          <h3 style={{ color: "blue" }}>Home Delivery</h3>
+          <img
+            style={{ width: "60%", marginLeft: "30px" }}
+            src={bag}
+            alt="Bag Icon"
+          />
+          <h2>Home Delivery</h2>
         </div>
         <div className="icon-container">
           <img src={certi} style={{ width: "50%" }} alt="Certificate Icon" />
-          <h3 style={{ color: "green" }}>Safe Packaging</h3>
+          <h2>Safe Packaging</h2>
         </div>
         <div className="icon-container">
           <img src={anytime} style={{ width: "50%" }} alt="Clock Icon" />
-          <h3 style={{ color: "red" }}>24-Hour Delivery</h3>
+          <h2>24-Hour Delivery</h2>
         </div>
       </div>
 

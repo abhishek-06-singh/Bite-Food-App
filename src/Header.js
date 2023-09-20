@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../assets/nav-logo.png";
+import logo from "../assets/logomain.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
 import "./header.css";
