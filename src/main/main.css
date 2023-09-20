@@ -13,6 +13,13 @@
   background-color: rgba(255, 195, 31, 0.565);
   padding: 20px;
 }
+.bag-icon {
+  padding: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(252, 251, 251);
+}
 .heading h1 {
   text-align: center;
   font-family: "Nanum Pen Script", cursive;
@@ -29,6 +36,11 @@
 }
 
 @media (max-width: 948px) {
+  .bag-icon {
+    flex-direction: column;
+    padding-left: 10px;
+    background-color: rgb(243, 243, 243);
+  }
   .heading h1 {
     font-size: 50px;
   }

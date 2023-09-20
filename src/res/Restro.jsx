@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./restro.css";
-// import { Input, Button, Modal, Checkbox } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Restro = () => {
-  // const { Search } = Input;
   useEffect(() => {
     const apiUrl =
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -22,7 +22,10 @@ const Restro = () => {
   return (
     <div className="container">
       <div className="filters">
-        <input className="input" placeholder="input search text" />
+        <div className="input-container">
+          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <input className="input" placeholder="Search restaurants" />
+        </div>
       </div>
     </div>
   );
