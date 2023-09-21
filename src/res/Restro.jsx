@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./restro.css";
-// import Carousel from "../carouselcomponent/Carousel";
-import { Carousel } from "3d-react-carousal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Carousel } from "3d-react-carousal";
 
 const Restro = () => {
-  let slides = [
-    <img src="https://picsum.photos/800/300/?random" alt="1" />,
-    <img src="https://picsum.photos/800/301/?random" alt="2" />,
-    <img src="https://picsum.photos/800/302/?random" alt="3" />,
-    <img src="https://picsum.photos/800/303/?random" alt="4" />,
-    <img src="https://picsum.photos/800/304/?random" alt="5" />,
-  ];
-  useEffect(() => {
-    const apiUrl =
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+  const [apidata, setApiData] = useState([]);
+  const [carouselImages, setCarouselImages] = useState([]);
+  console.log(carouselImages);
 
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const cloudImgId =
+    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    console.log(json);
+
+    const imageUrls =
+      json.data.cards[0].card.card.gridElements.infoWithStyle.info.map(
+        (item) => cloudImgId + item.imageId
+      );
+
+    const imageElements = imageUrls.map((imageUrl, index) => (
+      <img src={imageUrl} alt={`Image ${index}`} key={index} />
+    ));
+
+    setCarouselImages(imageElements);
+  };
 
   return (
     <div className="container">
@@ -37,7 +44,7 @@ const Restro = () => {
         </div>
       </div>
       <div className="carousel">
-        <Carousel slides={slides} autoplay={true} interval={3000} />
+        <Carousel slides={carouselImages} autoplay={true} interval={3000} />
       </div>
     </div>
   );
