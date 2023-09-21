@@ -1,6 +1,7 @@
 .container {
   display: flex;
   margin-top: 40px;
+  flex-direction: column;
 }
 
 .filters {
@@ -30,15 +31,10 @@ input {
   color: gray;
 }
 
-.ant-btn-primary {
-  background-color: rgb(157, 2, 2);
-}
-.ant-btn-primary:hover {
-  background-color: rgb(229, 9, 9);
-}
-.ant-modal-body {
-  word-wrap: normal !important;
-  margin-left: 0 !important;
+.carousel {
+  margin-top: 60px;
+  align-items: center;
+  text-align: center;
 }
 
 @media (max-width: 1237px) {
