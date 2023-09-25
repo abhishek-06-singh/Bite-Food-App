@@ -7,6 +7,7 @@
 .filters {
   margin: auto;
   display: flex;
+  margin-top: 100px;
   align-items: center;
 }
 
@@ -30,26 +31,49 @@ input {
   transform: translateY(-50%);
   color: gray;
 }
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-left: 130px;
 
+  margin-top: 20px;
+}
 .carousel {
   margin-top: 60px;
   align-items: center;
-  text-align: center;
 }
 
 @media (max-width: 1237px) {
+  .filters {
+    margin-top: 80px;
+  }
   input {
     width: 750px;
   }
 }
 @media (max-width: 1050px) {
+  .filters {
+    margin-top: 80px;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-top: 60px;
+  }
   input {
     width: 700px;
   }
 }
 @media (max-width: 850px) {
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-top: 20px;
+  }
   .filters {
-    margin: auto;
+    margin-top: 90px;
     align-items: center;
   }
   input {
@@ -57,9 +81,15 @@ input {
   }
 }
 @media (max-width: 720px) {
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-top: 20px;
+  }
   .filters {
     display: flex;
-    margin: auto;
+    margin-top: 90px;
     align-items: center;
 
     margin-bottom: 20px;
@@ -71,6 +101,12 @@ input {
   }
 }
 @media (max-width: 450px) {
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-top: 20px;
+  }
   .container {
     padding: 0;
   }
@@ -87,5 +123,6 @@ input {
     margin-bottom: 20px;
     width: 50%;
     width: auto;
+    margin-top: 90px;
   }
 }
