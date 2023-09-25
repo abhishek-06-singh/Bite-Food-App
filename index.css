@@ -28,8 +28,8 @@ body::-webkit-scrollbar-thumb {
     linear,
     left bottom,
     left top,
-    color-stop(0.44, rgb(255, 119, 16)),
-    color-stop(0.72, rgb(253, 128, 255)),
-    color-stop(0.86, rgb(217, 0, 255))
+    color-stop(0.44, rgb(255, 80, 16)),
+    color-stop(0.72, rgb(222, 47, 20)),
+    color-stop(0.86, rgb(196, 53, 21))
   );
 }

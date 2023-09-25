@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./restro.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { Carousel } from "3d-react-carousal";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
@@ -9,35 +13,49 @@ import Skeleton from "@mui/material/Skeleton";
 const Restro = () => {
   const [apidata, setApiData] = useState([]);
   const [carouselImages, setCarouselImages] = useState([]);
+  const [dishSlider, setDishSlider] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(carouselImages);
+  console.log(dishSlider);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [apidata]);
 
   const cloudImgId =
     "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
   const fetchData = async () => {
     setIsLoading(true);
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
 
-    const imageUrls =
-      json.data.cards[0].card.card.gridElements.infoWithStyle.info.map(
-        (item) => cloudImgId + item.imageId
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
 
-    const imageElements = imageUrls.map((imageUrl, index) => (
-      <img src={imageUrl} alt={`Image ${index}`} key={index} />
-    ));
+      if (!data.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-    setCarouselImages(imageElements);
-    setIsLoading(false);
+      const json = await data.json();
+      console.log(json);
+
+      const Bannerurls =
+        json.data.cards[0].card.card.gridElements.infoWithStyle.info.map(
+          (item) => cloudImgId + item.imageId
+        );
+      const Sliderurls = json.data.cards[1].card.card.imageGridCards.info.map(
+        (item) => cloudImgId + item.imageId
+      );
+      const imageElements = Bannerurls.map((imageUrl, index) => (
+        <img src={imageUrl} alt={`Image ${index}`} key={index} />
+      ));
+
+      setCarouselImages(imageElements);
+      setDishSlider(Sliderurls);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   return (
@@ -60,8 +78,40 @@ const Restro = () => {
             <Skeleton animation={false} />
           </Box>
         ) : (
-          <Carousel slides={carouselImages} autoplay={true} interval={3000} />
+          <Carousel
+            width="900px"
+            slides={carouselImages}
+            autoplay={true}
+            interval={1000}
+          />
         )}
+      </div>
+      <span className="section-title"> What's on your mind?</span>
+      <div className="dish-container">
+        <div className="dish-slider">
+          {isLoading
+            ? Array.from({ length: 8 }).map((_, index) => (
+                <Skeleton
+                  key={index}
+                  sx={{
+                    bgcolor: "grey.900",
+                    borderRadius: "50%",
+                    marginRight: "50px",
+                  }}
+                  variant="rectangular"
+                  width={100}
+                  height={100}
+                />
+              ))
+            : dishSlider.map((imageUrl, index) => (
+                <img
+                  src={imageUrl}
+                  alt={`Dish ${index}`}
+                  key={index}
+                  className="dish-thumbnail"
+                />
+              ))}
+        </div>
       </div>
 
       <div className="filters">
