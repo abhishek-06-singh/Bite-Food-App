@@ -1,3 +1,3 @@
-<img src="./assets/logomain.png"  width="40%"/>
+<img src="./assets/logomain.png"  width="20%"/>
 
 # Bite Food App``
