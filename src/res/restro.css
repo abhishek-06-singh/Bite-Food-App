@@ -22,6 +22,7 @@ input {
   width: 1100px;
   border-radius: 30px;
   padding-left: 60px;
+
   border: 2px solid rgb(174, 173, 173);
 }
 
@@ -46,7 +47,7 @@ input {
 }
 .arrow-container {
   display: flex;
-  padding: 30px;
+  padding: 10px;
   justify-content: flex-end;
 }
 .arrow {
@@ -69,11 +70,13 @@ input {
   display: flex;
   overflow-x: auto;
   margin-top: 20px;
-  padding: 60px;
+  padding: 20px;
   flex-wrap: nowrap;
   transition: transform 0.5s ease;
 }
-
+.dish-item {
+  width: 200px;
+}
 .dish-thumbnail {
   height: 100px;
   border-radius: 50%;

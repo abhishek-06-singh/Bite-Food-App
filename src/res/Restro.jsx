@@ -14,10 +14,12 @@ const Restro = () => {
   const [apidata, setApiData] = useState([]);
   const [carouselImages, setCarouselImages] = useState([]);
   const [dishSlider, setDishSlider] = useState([]);
+  const [dishSliderName, setDishSliderName] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const sliderRef = useRef(null);
-  console.log(currentImageIndex);
+  console.log(dishSliderName);
   useEffect(() => {
     fetchData();
   }, [apidata]);
@@ -47,12 +49,18 @@ const Restro = () => {
       const Sliderurls = json.data.cards[1].card.card.imageGridCards.info.map(
         (item) => cloudImgId + item.imageId
       );
+      const Sliderurlsname =
+        json.data.cards[1].card.card.imageGridCards.info.map(
+          (item) => item.action.text
+        );
+
       const imageElements = Bannerurls.map((imageUrl, index) => (
         <img src={imageUrl} alt={`Image ${index}`} key={index} />
       ));
 
       setCarouselImages(imageElements);
       setDishSlider(Sliderurls);
+      setDishSliderName(Sliderurlsname);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -61,9 +69,7 @@ const Restro = () => {
   const handleLeftArrowClick = () => {
     if (sliderRef.current) {
       const scrollAmount = sliderRef.current.clientWidth;
-
-      const newScrollLeft = sliderRef.current.scrollLeft - scrollAmount;
-
+      const newScrollLeft = sliderRef.current.scrollLeft - scrollAmount / 2;
       sliderRef.current.scrollTo({
         left: newScrollLeft,
         behavior: "smooth",
@@ -74,9 +80,7 @@ const Restro = () => {
   const handleRightArrowClick = () => {
     if (sliderRef.current) {
       const scrollAmount = sliderRef.current.clientWidth;
-
-      const newScrollLeft = sliderRef.current.scrollLeft + scrollAmount;
-
+      const newScrollLeft = sliderRef.current.scrollLeft + scrollAmount / 2;
       sliderRef.current.scrollTo({
         left: newScrollLeft,
         behavior: "smooth",
@@ -121,35 +125,35 @@ const Restro = () => {
         </span>
       </div>
       <div className="dish-container">
-        <div
-          className="dish-slider"
-          style={{ transform: `translateX(-${currentImageIndex * 120}px)` }}
-          ref={sliderRef}
-        >
-          {isLoading
-            ? Array.from({ length: 8 }).map((_, index) => (
-                <Skeleton
-                  key={index}
-                  sx={{
-                    bgcolor: "grey.900",
-                    borderRadius: "50%",
-                    marginRight: "50px",
-                  }}
-                  variant="rectangular"
-                  width={100}
-                  height={100}
-                />
-              ))
-            : dishSlider.map((imageUrl, index) => (
-                <img
-                  src={imageUrl}
-                  alt={`Dish ${index}`}
-                  key={index}
-                  className={`dish-thumbnail ${
-                    index === currentImageIndex ? "active" : ""
-                  }`}
-                />
+        <div className="dish-slider" ref={sliderRef}>
+          {isLoading ? (
+            Array.from({ length: 8 }).map((_, index) => (
+              <Skeleton
+                key={index}
+                sx={{
+                  bgcolor: "grey.900",
+                  borderRadius: "50%",
+                  marginRight: "50px",
+                }}
+                variant="rectangular"
+                width={100}
+                height={100}
+              />
+            ))
+          ) : (
+            <>
+              {dishSlider.map((imageUrl, index) => (
+                <div key={index} className="dish-item">
+                  <img
+                    src={imageUrl}
+                    alt={`Dish ${index}`}
+                    className="dish-thumbnail"
+                  />
+                  <p style={{ marginLeft: "55px" }}>{dishSliderName[index]}</p>
+                </div>
               ))}
+            </>
+          )}
         </div>
       </div>
 
