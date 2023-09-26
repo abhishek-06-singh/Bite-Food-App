@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./restro.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
-  faChevronLeft,
-  faChevronRight,
+  faArrowRight,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { Carousel } from "3d-react-carousal";
 import Box from "@mui/material/Box";
@@ -15,8 +15,9 @@ const Restro = () => {
   const [carouselImages, setCarouselImages] = useState([]);
   const [dishSlider, setDishSlider] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(dishSlider);
-
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const sliderRef = useRef(null);
+  console.log(currentImageIndex);
   useEffect(() => {
     fetchData();
   }, [apidata]);
@@ -57,7 +58,31 @@ const Restro = () => {
       console.error("Error fetching data:", error);
     }
   };
+  const handleLeftArrowClick = () => {
+    if (sliderRef.current) {
+      const scrollAmount = sliderRef.current.clientWidth;
 
+      const newScrollLeft = sliderRef.current.scrollLeft - scrollAmount;
+
+      sliderRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleRightArrowClick = () => {
+    if (sliderRef.current) {
+      const scrollAmount = sliderRef.current.clientWidth;
+
+      const newScrollLeft = sliderRef.current.scrollLeft + scrollAmount;
+
+      sliderRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <div className="container">
       <span className="section-title">Best offers for you ➪</span>
@@ -87,8 +112,20 @@ const Restro = () => {
         )}
       </div>
       <span className="section-title"> What's on your mind?</span>
+      <div className="arrow-container">
+        <span className="arrow" onClick={handleLeftArrowClick}>
+          <FontAwesomeIcon icon={faArrowLeft} style={{ color: "#000000" }} />
+        </span>
+        <span className="arrow" onClick={handleRightArrowClick}>
+          <FontAwesomeIcon icon={faArrowRight} style={{ color: "#000000" }} />
+        </span>
+      </div>
       <div className="dish-container">
-        <div className="dish-slider">
+        <div
+          className="dish-slider"
+          style={{ transform: `translateX(-${currentImageIndex * 120}px)` }}
+          ref={sliderRef}
+        >
           {isLoading
             ? Array.from({ length: 8 }).map((_, index) => (
                 <Skeleton
@@ -108,7 +145,9 @@ const Restro = () => {
                   src={imageUrl}
                   alt={`Dish ${index}`}
                   key={index}
-                  className="dish-thumbnail"
+                  className={`dish-thumbnail ${
+                    index === currentImageIndex ? "active" : ""
+                  }`}
                 />
               ))}
         </div>
