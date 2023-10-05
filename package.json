@@ -42,6 +42,5 @@
   },
   "browsersList": [
     "last 10 version"
-  ],
-  "main": "index.js"
+  ]
 }
