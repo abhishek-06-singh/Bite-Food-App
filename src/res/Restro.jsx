@@ -13,7 +13,9 @@ import Skeleton from "@mui/material/Skeleton";
 const Restro = () => {
   const [apidata, setApiData] = useState([]);
   const [carouselImages, setCarouselImages] = useState([]);
+  console.log("carouselImages", carouselImages);
   const [dishSlider, setDishSlider] = useState([]);
+  console.log("dishSlider", dishSlider);
   const [dishSliderName, setDishSliderName] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -46,11 +48,12 @@ const Restro = () => {
         json.data.cards[0].card.card.gridElements.infoWithStyle.info.map(
           (item) => cloudImgId + item.imageId
         );
-      const Sliderurls = json.data.cards[1].card.card.imageGridCards.info.map(
-        (item) => cloudImgId + item.imageId
-      );
+      const Sliderurls =
+        json.data.cards[1].card.card.gridElements.infoWithStyle.info.map(
+          (item) => cloudImgId + item.imageId
+        );
       const Sliderurlsname =
-        json.data.cards[1].card.card.imageGridCards.info.map(
+        json.data.cards[1].card.card.gridElements.infoWithStyle.info.map(
           (item) => item.action.text
         );
 
@@ -111,7 +114,7 @@ const Restro = () => {
             width="900px"
             slides={carouselImages}
             autoplay={true}
-            interval={1000}
+            interval={2000}
           />
         )}
       </div>
